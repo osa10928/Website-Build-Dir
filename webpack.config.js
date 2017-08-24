@@ -6,7 +6,7 @@ module.exports = {
 	  entry: './webpack/entry.js',
 	  output: {
 	  	//put the generated file in the assets folder so jekyll will grab it
-	  	path: path.resolve('src', './js'),
+	  	path: path.resolve('src', './portassets'),
 	  	filename: 'bundle.js'
 	  },
 	  module: {
@@ -18,6 +18,19 @@ module.exports = {
 	  	  	query: {
 	  	  		presets: ['react']
 	  	  	}
+	  	  },
+	  	  {
+	  	  	test: /\.(jpe?g|png|gif|svg)$/i, 
+	  	  	use: [
+	  	  	  {
+	  	  	  	loader: "file-loader",
+	  	  	  	options: {
+	  	  	  		name: "[name].[ext]",
+	  	  	  		publicPath: '/',
+	  	  	  		outputPath: 'portassets/images/'
+	  	  	  	}
+	  	  	  }
+	  	  	]
 	  	  }
 	  	]
 	}
