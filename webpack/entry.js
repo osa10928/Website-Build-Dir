@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Hello from './components/hello';
+import Opening from './components/opening';
 import Navbar from './components/navbar';
 
 class App extends React.Component {
@@ -10,7 +10,9 @@ class App extends React.Component {
 			  <header>
 			    <Navbar />
 			  </header>
-			  <Hello />
+			  <main className="container-fluid">
+			    <Opening />
+			  </main>
 			</section>
 		)
 	}
