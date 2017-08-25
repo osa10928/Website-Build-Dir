@@ -12,12 +12,12 @@ class Opening extends React.Component {
 			    </heading>
 			    <div id="options">
 			        <a href='#' className="row" id="webpages-option">
-			            <div className="option col text-center">
+			            <div className="option col text-center btn-lg">
 			                Webpages
 			            </div>
 			        </a>
 			        <a href='#' className="row" id="codepens-option">
-			            <div className="option col text-center">
+			            <div className="option col text-center btn-lg">
 			                Codepens
 			            </div>
 			        </a>
