@@ -1,4 +1,5 @@
 import React from 'react';
+import json from '../../../src/portassets/data/portfolio_data.json';
 
 class CodepensDisplay extends React.Component {
 	render () {
