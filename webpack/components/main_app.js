@@ -7,6 +7,9 @@ import Display from './app_components/display';
 
 
 class MainApp extends React.Component {
+	constructor(props) {
+		super(props)
+	}
 	render() {
 		return (
 			<main className="container-fluid">
@@ -14,7 +17,7 @@ class MainApp extends React.Component {
 			        <OpeningTitle />
 			    </section>
 			    <section id="main-display">
-			        <OpeningDisplay />
+			        <Display />
 			    </section>
 			</main>
 		)
