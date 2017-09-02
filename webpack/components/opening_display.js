@@ -10,7 +10,7 @@ class OpeningDisplay extends React.Component {
 	var light = "onClick"
 
 	onClickHandler(){
-		console.log("hey")
+		console.log("heyyy")
 	}
 
 	render() {
