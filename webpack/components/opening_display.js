@@ -7,6 +7,8 @@ class OpeningDisplay extends React.Component {
 		this.onClickHandler = this.onClickHandler.bind(this)
 	}
 
+	var light = "onClick"
+
 	onClickHandler(){
 		console.log("hey")
 	}
@@ -15,7 +17,7 @@ class OpeningDisplay extends React.Component {
 		return (
 			<div id="opening-display">
 			    <div id="options">
-			        <a href='#' className="row" id="webpages-option" onClick={this.onClickHandler}>
+			        <a href='#' className="row" id="webpages-option" {light}={this.onClickHandler}>
 			            <div className="option col text-center btn-lg">
 			                Webpages
 			            </div>
