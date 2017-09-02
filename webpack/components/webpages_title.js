@@ -1,9 +1,9 @@
 import React from 'react';
 
-class WebsitesTitle extends React.Component {
+class WebpagesTitle extends React.Component {
 	render () {
 		return (
-			<heading id="websites-title">
+			<heading id="webpages-title">
 			    <h1>
 			        Websites
 			    </h1>
@@ -12,4 +12,4 @@ class WebsitesTitle extends React.Component {
 	}
 }
 
-export default WebsitesTitle;
+export default WebpagesTitle;

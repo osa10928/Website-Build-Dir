@@ -1,23 +1,29 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import OpeningTitle from './app_components/opening_title';
 import OpeningDisplay from './app_components/opening_display';
-import WebsitesTitle from './app_components/websites_title';
+import WebpagesTitle from './app_components/webpages_title';
+import WebpagesDisplay from './app_components/webpages_display';
 import CodepensTitle from './app_components/codepens_title';
-import Display from './app_components/display';
+import CodepensDisplay from './app_components/codepens_display';
+//import Display from './app_components/display';
 
 
 class MainApp extends React.Component {
-	constructor(props) {
-		super(props)
-	}
+	
+
 	render() {
 		return (
 			<main className="container-fluid">
 			    <section id="main-info">
-			        <OpeningTitle />
+			        <Route exact path="/" component={OpeningTitle} />
+			        <Route exact path="/webpages" component={WebpagesTitle} />
+			        <Route exact path="/codepens" component={CodepensTitle} />
 			    </section>
 			    <section id="main-display">
-			        <Display />
+			        <Route exact path="/" component={OpeningDisplay} />
+			        <Route exact path="/webpages" component={WebpagesDisplay} />
+			        <Route exact path="/codepens" component={CodepensDisplay} />
 			    </section>
 			</main>
 		)

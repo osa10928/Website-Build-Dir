@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import MainApp from './components/main_app';
 import Navbar from './components/navbar';
 
@@ -11,7 +12,9 @@ class App extends React.Component {
 			        <Navbar />
 			    </header>
 			    <main className="container-fluid">
-			        <MainApp />
+			        <Router basename="/portfolio">
+			            <MainApp />
+			        </Router> 
 			    </main>
 			</section>
 		)
