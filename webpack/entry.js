@@ -11,7 +11,7 @@ class App extends React.Component {
 			    <header>
 			        <Navbar />
 			    </header>
-			    <main className="container-fluid">
+			    <main>
 			        <Router basename="/portfolio">
 			            <MainApp />
 			        </Router> 
