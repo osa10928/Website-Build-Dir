@@ -10,9 +10,6 @@ class WebsitesDisplay extends React.Component {
 		super(props)
 		this.processTechnologies = this.processTechnologies.bind(this)
 		this.toggle = this.toggle.bind(this);
-        this.state = {
-            isOpen: false
-        };
 	}
 
 	toggle(elementId) {
@@ -87,7 +84,9 @@ class WebsitesDisplay extends React.Component {
 				        </div> 
 				    </a>
 				    <div className="more-info collapsed text-center" id={page.id} style={hidden}>
-				        {page.description}
+				        <p>{page.description}</p><br/>
+				        <p>Technologies: {page.technology.join(' ')}</p>
+				        <p>See webpage <a href={page.site} target="_blank">here</a>!</p>
 				    </div>
 				            
 				</div>
