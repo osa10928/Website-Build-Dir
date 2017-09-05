@@ -14,7 +14,7 @@ class MainApp extends React.Component {
 
 	render() {
 		return (
-			<main className="container-fluid">
+			<div className="container-fluid" id="main-container">
 			    <section id="main-info">
 			        <Route exact path="/" component={OpeningTitle} />
 			        <Route exact path="/webpages" component={WebpagesTitle} />
@@ -25,7 +25,7 @@ class MainApp extends React.Component {
 			        <Route exact path="/webpages" component={WebpagesDisplay} />
 			        <Route exact path="/codepens" component={CodepensDisplay} />
 			    </section>
-			</main>
+			</div>
 		)
 	}
 }

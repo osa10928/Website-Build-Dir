@@ -1,4 +1,5 @@
 import React from 'react';
+import { Collapse, Button, CardBlock, Card } from 'reactstrap';
 import json from '../../../src/portassets/data/portfolio_data.json';
 import aboutPage from '../../../src/portassets/images/about.png';
 import landingPage from '../../../src/portassets/images/landing.png';
@@ -8,7 +9,26 @@ class WebsitesDisplay extends React.Component {
 	constructor(props){
 		super(props)
 		this.processTechnologies = this.processTechnologies.bind(this)
+		this.toggle = this.toggle.bind(this);
+        this.state = {
+            isOpen: false
+        };
 	}
+
+	toggle(elementId) {
+        var element = document.getElementById(elementId);
+        if (element.classList.contains('collapsed')) {
+        	if (element.classList.contains('remove-element')) {
+        		element.classList.remove('remove-element')
+        	}
+        	element.classList.remove('collapsed')
+        	element.classList.add('show-element')
+        } else {
+        	element.classList.remove('show-element')
+        	element.classList.add('remove-element')
+        	element.classList.add('collapsed')
+        }
+    }
 
 	processTechnologies(pages) {
 		var techHash = {}
@@ -36,6 +56,10 @@ class WebsitesDisplay extends React.Component {
 		var techButtons = this.processTechnologies(json.webpages);
 
 		var webpages = json.webpages.map((page, i) => {
+			var hidden = {
+				maxHeight: "0px",
+				overflow: "hidden"
+			}
 			switch (page.id) {
 				case "aboutPage":
 				    var image = aboutPage;
@@ -51,19 +75,24 @@ class WebsitesDisplay extends React.Component {
 			}
 			
 			return (
-				
-				<div className="thumbnail">
-				  <span data-text={page.name} className="text-center">
-				        <p className="text-center">
-				            {page.name}
-				        </p>
-				  </span>
-				  <img src={image} className="img-fluid" key={i.toString()} alt={page.id}/>
-				</div> 
-				
+				<div className="webpage-element" key={i.toString()}>
+				    <a onClick={() => {this.toggle(page.id)}}>
+				        <div className="thumbnail">
+				            <span data-text={page.name} className="text-center">
+				                <p className="text-center">
+				                    {page.name}
+				                </p>
+				            </span>
+				            <img src={image} className="img-fluid" alt={page.id}/>
+				        </div> 
+				    </a>
+				    <div className="more-info collapsed text-center" id={page.id} style={hidden}>
+				        {page.description}
+				    </div>
+				            
+				</div>
 			)
 		});
-		console.log(techButtons)
 
 
 		return (
@@ -71,7 +100,7 @@ class WebsitesDisplay extends React.Component {
 			    <div className="d-flex flex-wrap justify-content-start technologies">
 			        {techButtons}
 			    </div>
-			    <div className="d-flex flex-wrap justify-content-around align-items-center displayed">
+			    <div className="d-flex flex-wrap justify-content-center align-items-center displayed">
 			        {webpages}
 			    </div>
 			</div>
