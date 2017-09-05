@@ -11,6 +11,7 @@ class CodepensDisplay extends React.Component {
 		super(props)
 		this.processTechnologies = this.processTechnologies.bind(this)
 		this.toggle = this.toggle.bind(this);
+		this.buttonClick = this.buttonClick.bind(this);
 	}
 
 	toggle(elementId) {
@@ -28,6 +29,43 @@ class CodepensDisplay extends React.Component {
         }
     }
 
+    buttonClick(buttonId, pages) {
+    	var button = document.getElementById(buttonId)
+    	var pagesToShow = {}
+    	
+    	button.classList.contains('clicked') ? button.classList.remove('clicked') : button.classList.add('clicked')
+    	var buttonsClicked = document.getElementsByClassName('clicked')
+
+    	for (var a in pages) {
+    		pagesToShow[pages[a].id] = 1
+    	}
+
+    	for (var i=0;i<buttonsClicked.length;i++) {
+    		for (var j in pages) {
+    		    if (!pages[j].technology.includes(buttonsClicked[i].id)) {
+    			    delete pagesToShow[pages[j].id]
+    		    }
+    		}
+    	}
+
+    	for (var k in pages) {
+    		if (!pagesToShow[pages[k].id]) {
+    			var hidePage = document.getElementById(pages[k].id)
+    			if (!hidePage.classList.contains('remove-element')) {
+    				hidePage.classList.contains('show-element') ? hidePage.classList.remove('show-element') : null
+    				hidePage.classList.add('remove-element')
+    			}
+    		} else {
+    			var showPage = document.getElementById(pages[k].id)
+    			if (!showPage.classList.contains('show-element')) {
+    				showPage.classList.contains('remove-element') ? showPage.classList.remove('remove-element') : null
+    				showPage.classList.add('show-element')
+    			}
+    		}
+    	}
+
+    }
+
     processTechnologies(pages) {
 		var techHash = {}
 		var technologies = []
@@ -41,7 +79,7 @@ class CodepensDisplay extends React.Component {
 		}
 		var techno = technologies.map((tech, i) => {
 			return (
-				<button key={i.toString()} className="techButtons">
+				<button id={tech} key={i.toString()} onClick={() => {this.buttonClick(tech, json.codepens)}} className="techButtons">
 				    {tech}
 				</button>
 			)
@@ -82,8 +120,8 @@ class CodepensDisplay extends React.Component {
 			}
 			
 			return (
-				<div className="codepens-element" key={i.toString()}>
-				    <a onClick={() => {this.toggle(page.id)}}>
+				<div id={page.id} className="codepens-element" key={i.toString()}>
+				    <a onClick={() => {this.toggle(page.id + "-text")}}>
 				        <div className="thumbnail">
 				            <span data-text={page.name} className="text-center">
 				                <p className="text-center">
@@ -93,7 +131,7 @@ class CodepensDisplay extends React.Component {
 				            <img src={image} className="img-fluid" alt={page.id}/>
 				        </div> 
 				    </a>
-				    <div className="more-info collapsed text-center" id={page.id} style={hidden}>
+				    <div className="more-info collapsed text-center" id={page.id + "-text"} style={hidden}>
 				        <p>{page.description}</p><br/>
 				        <p>Technologies: {page.technology.join(' ')}</p>
 				        <p>See codepen <a href={page.site} target="_blank">here</a>!</p>
