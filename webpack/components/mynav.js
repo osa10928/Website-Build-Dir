@@ -61,7 +61,7 @@ class MyNav extends React.Component {
                 <NavLink href="https://osa10928.github.io/portfolio">Portfolio</NavLink>
               </NavItem>
               <NavItem>
-                <div id="social-media" className="conatainer-fluid self-center">
+                <div id="social-media" className="conatainer-fluid">
                 <div className="d-flex flex-nowrap justify-content-center">
                   <div className="icon-container col">
                     <a href="https://github.com/osa10928" target="_blank">
