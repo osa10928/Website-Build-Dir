@@ -67,7 +67,6 @@ class MainApp extends React.Component {
 
 	removeEvent(route) {
 		console.log('call-me')
-		
 		var app = document.getElementById('App')
 		var transitionEnd = this.transitionEndEventName()
 		app.removeEventListener(transitionEnd, () => {this.removeEvent(route); }, false)
