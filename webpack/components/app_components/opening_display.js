@@ -9,8 +9,8 @@ class OpeningDisplay extends React.Component {
 	}
 
 	onClickHandler(e){
-		//e.preventDefault();
-		//e.stopPropagation();
+		e.preventDefault();
+		e.stopPropagation();
 		this.props.onClick(e.target.id)
 	}
 

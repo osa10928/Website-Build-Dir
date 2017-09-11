@@ -74,17 +74,13 @@ class MainApp extends React.Component {
 			document.getElementById(route).click();
 		}, 500)
 	}
-	
-	componentDidUpdate() {
-		console.log('dated')
+
+	render() {
+		console.log('lol')
 		var app = document.getElementById('App')
 		if (window.getComputedStyle(app)['max-height'] == '0px') {
 			this.transitionShow()
 		}
-	}
-
-	render() {
-		console.log('lol')
 		return (
 			<div className="container-fluid" id="main-container">
 			    <div id="route-buttons">
