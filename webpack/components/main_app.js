@@ -6,14 +6,14 @@ import WebpagesTitle from './app_components/webpages_title';
 import WebpagesDisplay from './app_components/webpages_display';
 import CodepensTitle from './app_components/codepens_title';
 import CodepensDisplay from './app_components/codepens_display';
-//import Display from './app_components/display';
 
 
 class MainApp extends React.Component {
 	constructor(props){
 		super(props)
 		this.handleClick = this.handleClick.bind(this)
-		this.transition = this.transition.bind(this)
+		this.transitionHide = this.transitionHide.bind(this)
+		this.transitionShow = this.transitionShow.bind(this)
 		this.transitionEndEventName = this.transitionEndEventName.bind(this)
 		this.removeEvent = this.removeEvent.bind(this)
 	}
@@ -37,28 +37,36 @@ class MainApp extends React.Component {
     }
 
 	handleClick(destination) {
-		console.log(destination)
 		switch (destination) {
 			case 'webpages-button':
-			    this.transition('webpages-route')
+			    this.transitionHide('webpages-route')
 			    break;
 
 			case 'codepens-button':
-			    this.transition('codepens-route')
+			    this.transitionHide('codepens-route')
 			    break;
 		}
 	}
 
-	transition(route){
+	transitionHide(route){
+		console.log('called')
 		var app = document.getElementById('App')
 		var transitionEnd = this.transitionEndEventName()
-		app.addEventListener(transitionEnd, () => {this.removeEvent(route); }, false)
+		app.addEventListener(transitionEnd, this.removeEvent(route), false)
 		app.classList.contains('show-element') ? app.classList.remove('show-element') : null
 		app.classList.add('remove-element')
 	}
 
+	transitionShow() {
+		var app = document.getElementById('App')
+		setTimeout(function(){
+			app.classList.contains('remove-element') ? app.classList.remove('remove-element') : null
+		    app.classList.add('show-element')
+		}, 600)
+	}
+
 	removeEvent(route) {
-		console.log('why')
+		console.log('call-me')
 		var app = document.getElementById('App')
 		var transitionEnd = this.transitionEndEventName()
 		app.removeEventListener(transitionEnd, () => {this.removeEvent(route); }, false)
@@ -66,31 +74,17 @@ class MainApp extends React.Component {
 			document.getElementById(route).click();
 		}, 500)
 	}
-
-/*
-	componentWillUpdate() {
-		var app = document.getElementById('App')
-		app.classList.contains('show-element') ? app.classList.remove('show-element') : null
-		app.classList.add('remove-element')
-		console.log('what')
-		//while (window.getComputedStyle(app)['max-height'] != '0px') {
-			//console.log('shutup')
-			//console.log(window.getComputedStyle(app)['max-height'])
-		//}
-		
-		console.log(window.getComputedStyle(app)['max-height'])
-	}
 	
-*/
 	componentDidUpdate() {
+		console.log('dated')
 		var app = document.getElementById('App')
 		if (window.getComputedStyle(app)['max-height'] == '0px') {
-			app.classList.contains('remove-element') ? app.classList.remove('remove-element') : null
-		    app.classList.add('show-element')
+			this.transitionShow()
 		}
 	}
 
 	render() {
+		console.log('lol')
 		return (
 			<div className="container-fluid" id="main-container">
 			    <div id="route-buttons">
