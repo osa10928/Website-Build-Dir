@@ -14,7 +14,7 @@ class App extends React.Component {
 			    <main>
 			        <Router basename="/portfolio">
 			            <MainApp />
-			        </Router> 
+			        </Router>
 			    </main>
 			</section>
 		)

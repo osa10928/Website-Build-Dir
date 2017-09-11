@@ -9,11 +9,15 @@ class OpeningDisplay extends React.Component {
 	}
 
 	onClickHandler(e){
+		e.preventDefault();
+		e.stopPropagation();
 		this.props.onClick(e.target.id)
 	}
 
+	
+
 	render() {
-		console.log(this.props)
+		console.log('hey')
 		return (
 	        <div id="opening-display">
 		        <div id="options">
