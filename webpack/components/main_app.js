@@ -53,16 +53,16 @@ class MainApp extends React.Component {
 		var app = document.getElementById('App')
 		var transitionEnd = this.transitionEndEventName()
 		app.addEventListener(transitionEnd, this.removeEvent(route), false)
-		app.classList.contains('show-element') ? app.classList.remove('show-element') : null
-		app.classList.add('remove-element')
+		//app.classList.contains('show-element') ? app.classList.remove('show-element') : null
+		//app.classList.add('remove-element')
 	}
 
 	transitionShow() {
-		var app = document.getElementById('App')
-		setTimeout(function(){
-			app.classList.contains('remove-element') ? app.classList.remove('remove-element') : null
-		    app.classList.add('show-element')
-		}, 600)
+		//var app = document.getElementById('App')
+		//setTimeout(function(){
+		//	app.classList.contains('remove-element') ? app.classList.remove('remove-element') : null
+		//  app.classList.add('show-element')
+		//}, 600)
 	}
 
 	removeEvent(route) {
