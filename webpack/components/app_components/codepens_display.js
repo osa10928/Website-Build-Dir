@@ -143,6 +143,12 @@ class CodepensDisplay extends React.Component {
 
 		return (
 			<div id="codepens-display">
+			    <header>
+				    <h1>Technologies</h1>
+				    <p>
+				        (Click the image to see more information about the webpage. Filter by technology by clicking a technology button)
+				    </p>
+				</header>
 			    <div className="d-flex flex-wrap justify-content-start technologies">
 			        {techButtons}
 			    </div>
